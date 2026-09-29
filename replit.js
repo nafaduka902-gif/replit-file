@@ -14,7 +14,10 @@ const ALL_PROMPT_WORKS = {
     "removed duplicate Manage Admin handler",
     "isolated Sequence state by chat and user",
     "added Season/Episode variants and duplicate detection",
-    "added owner-bound channel posting callbacks with access checks and replay protection"
+    "added owner-bound channel posting callbacks with access checks and replay protection",
+    "organized Tools menu and removed duplicate Group entry",
+    "placed Group and Backend side by side in the main menu",
+    "added owner-only Backend command and inline glass-button actions for update, backup, export, import, status, and diagnostics"
   ],
   "remaining": [
     "live NxCreator Telegram verification",
@@ -32,11 +35,12 @@ const PROJECT_HANDOFF = {
   "HANDOFF_REPOSITORY": "nafaduka902-gif/replit-file",
   "BRANCH": "main",
   "SOURCE": "source/bot.js",
-  "LAST_COMPLETED_SECTION": "Patch 1: safety, menu, sequence, channel posting",
-  "LAST_COMPLETED_FEATURE": "owner-bound channel posting and Sequence isolation",
+  "LAST_COMPLETED_SECTION": "Patch 2: organized Tools and shared Backend actions",
+  "LAST_COMPLETED_FEATURE": "Backend commands and inline keyboard",
   "COMPLETED": [],
   "IMPLEMENTED_NOT_TESTED": [
-    "all Patch 1 changes"
+    "Patch 1 changes",
+    "Patch 2 changes"
   ],
   "IN_PROGRESS": [
     "runtime verification and remaining prompt requirements"
@@ -44,22 +48,22 @@ const PROJECT_HANDOFF = {
   "NOT_STARTED": [
     "remaining feature patches"
   ],
-  "NEXT_STEP": "Run live NxCreator verification, then continue the next smallest safe patch from the real source.",
-  "LAST_COMMIT": "Patch bot safety, sequence isolation, and channel posting",
-  "LAST_COMMIT_SHA": "a2858d30d9f9ea49a7dde9b4c0d8e2686b19bde9",
+  "NEXT_STEP": "Run live NxCreator verification for Backend buttons and continue remaining requirements from the original prompt.",
+  "LAST_COMMIT": "Organize tools and add backend command buttons",
+  "LAST_COMMIT_SHA": "3f8ba5eca135aa84804d4ce95c68f56acdcb1177",
   "LAST_UPDATE": "2026-09-29",
   "STATUS": "IMPLEMENTED — NOT TESTED"
 };
 
 const PROGRESS = {
-  "source_syntax_check": "PASSED with node --check on the candidate source",
-  "github_write": "VERIFIED by re-fetching source/bot.js after commit",
+  "source_syntax_check": "PASSED with node --check after Patch 2",
+  "github_write": "VERIFIED by re-fetching source/bot.js after Patch 2",
   "runtime_tests": "NOT TESTED",
   "deployment": "NOT DEPLOYED",
   "push": "PUSHED via GitHub API commit"
 };
 
-const NEXT_STEP = "Verify Telegram/NxCreator behavior for Backend, Sequence, generated-post channel suggestion, permissions, and replay handling before claiming runtime success.";
+const NEXT_STEP = "Verify /backend, Backend glass buttons, /updatebot, /backupfile, /export, /import, /status, /statuserror, and the reorganized Tools menu in NxCreator before claiming runtime success.";
 
 const CHANGE_LOG = [
   {
@@ -97,9 +101,33 @@ const CHANGE_LOG = [
     "target": "Manage Admin handlers",
     "status": "IMPLEMENTED — NOT TESTED",
     "reason": "Remove one exact duplicate handler without changing the remaining implementation."
+  },
+  {
+    "type": "#update",
+    "target": "mainKeyboard",
+    "status": "IMPLEMENTED — NOT TESTED",
+    "reason": "Place Group and Backend side by side on the second main-menu row."
+  },
+  {
+    "type": "#update",
+    "target": "toolsKeyboard",
+    "status": "IMPLEMENTED — NOT TESTED",
+    "reason": "Organize tools into clear rows and remove only the duplicate Group entry; Group remains available from the main menu."
+  },
+  {
+    "type": "#new",
+    "target": "backendKeyboard, /backend, and backend callback router",
+    "status": "IMPLEMENTED — NOT TESTED",
+    "reason": "Expose the existing update, backup, export, import, status, and diagnostics flows through owner-only inline glass buttons and a command."
+  },
+  {
+    "type": "#update",
+    "target": "backend command flows",
+    "status": "IMPLEMENTED — NOT TESTED",
+    "reason": "Refactor existing command handlers into shared helpers so buttons and commands use the same original logic."
   }
 ];
 
-const PROGRESS_PROMPT = "Continue from the real source repository nafaduka902-gif/data-bot, branch main, file source/bot.js. Read this handoff, then read the complete current bot.js before changing anything. Do not reapply Patch 1. Runtime tests are not complete. Next step: verify Patch 1 in NxCreator and continue remaining requirements using exact #new/#update patches.";
+const PROGRESS_PROMPT = "Continue from the real source repository nafaduka902-gif/data-bot, branch main, file source/bot.js. Read this handoff, then read the complete current bot.js before changing anything. Do not reapply Patch 1 or Patch 2. Runtime tests are not complete. Next step: verify the Backend command/buttons and Tools menu in NxCreator, then continue remaining requirements using exact #new/#update patches.";
 
 module.exports = { ALL_PROMPT_WORKS, ORIGINAL_PROMPT, PROJECT_HANDOFF, PROGRESS, NEXT_STEP, CHANGE_LOG, PROGRESS_PROMPT };
